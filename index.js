@@ -169,9 +169,11 @@ async function run() {
    const database= await client.db("Afer_fail");
     const appontmentOption_collection = database.collection("appontmentOption");
     const booking_appointment = database.collection("booking");
-    app.get("/appontmentOption",async (req, res) => {
-      const result = await appontmentOption_collection.find({}).toArray()
-      res.send(result)
+    app.get("/appontmentOption", async (req, res) => {
+      const date = req.query.date;
+      console.log(date);
+      const result = await appontmentOption_collection.find({}).toArray();
+      res.send(result);
     });
     // app.post("/booking", async (req, res) => {
     //   const booking_info = await req.body;
